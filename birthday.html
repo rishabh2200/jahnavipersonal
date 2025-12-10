@@ -11,6 +11,7 @@
       --bg2: #ffeef6;
       --card: #ffffff;
       --accent: #ff3b6b;
+      --accent1: #ffffff;
       --muted: #6b6b6b;
       --text-dark: #2a2a2a;
       --text-soft: #444;
@@ -54,6 +55,14 @@
       line-height:0.9;
       margin:0;
       color:var(--accent);
+      text-shadow: 0 6px 30px rgba(255,59,107,0.16);
+    }
+    .greetinga {
+      font-family: 'white', cursive;
+      font-size:66px;
+      line-height:0.9;
+      margin:0;
+      color:var(--accent1);
       text-shadow: 0 6px 30px rgba(255,59,107,0.16);
     }
     .sub {
@@ -147,30 +156,43 @@
     /* ======================================= */
 
     /* === Responsive Adjustments === */
-    @media (max-width:990px){
-      .wrap{max-width:550px} 
-      .message{padding:36px}
-      .greeting{font-size:58px}
-      .line{font-size:19px}
-    }
-
     /* Mobile View */
-    @media (max-width:480px){
+@media (max-width:480px){
       body { padding: 16px; }
       .wrap { border-radius: 16px; }
-      .greeting{font-size:42px}
+
+      .greeting{
+          font-size:34px;        /* smaller for tiny screens */
+          line-height:1.1;       /* fix text cutting */
+          word-break: break-word;
+          white-space: normal;
+          text-align:center;     /* avoid cut from sides */
+      }
+      .greetinga{
+    font-size:20px;    /* smaller space on tiny screens */
+    margin:0 0 8px 0;
+  }
+
       .sub { font-size: 18px; }
       .line{font-size:17px;padding:12px 14px}
       .big-quote{font-size:20px;padding:14px}
       .message{padding:20px}
       .footer{font-size:14px}
-    }
+}
+
   </style>
 </head>
 <body>
   <div class="wrap" role="main" aria-label="Birthday card">
     
     <div class="message">
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
+        <h1 class="greetinga">--</h1>
       <h1 class="greeting">Happy Birthday, My Love<span class="heart">❤️</span></h1>
       <p class="sub">A special day made just for you.</p>
 
