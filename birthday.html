@@ -12,6 +12,9 @@
       --card: #ffffff;
       --accent: #ff3b6b;
       --muted: #6b6b6b;
+      --text-dark: #2a2a2a;
+      --text-soft: #444;
+      --highlight: #ff7ba5;
     }
 
     html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;}
@@ -26,126 +29,153 @@
     .wrap{
       width:100%;
       max-width:1100px;
-      border-radius:18px;
+      border-radius:22px;
       overflow:hidden;
       box-shadow: 0 20px 40px rgba(20,20,40,0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.98));
       display:flex;
       gap:0;
       align-items:stretch;
+      border: 2px solid rgba(255,59,107,0.12);
     }
 
     /* Left: big photo */
     .photo {
       flex: 1.15 1 0%;
       min-width:380px;
-      background:linear-gradient(180deg,#fff,#fff0);
+      background: linear-gradient(180deg, rgba(255,245,248,0.6), rgba(255,245,248,0.95)); /* Soft background for image area */
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:28px;
+      padding:26px;
     }
     .photo img{
       width:100%;
       max-width:620px;
-      height:auto;
-      border-radius:12px;
+      height: 480px; /* Base height for laptop view */
+      border-radius:16px;
       border:10px solid white;
       box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      object-fit:cover;
+      object-fit:cover; /* Ensures the image covers the container without distortion */
       display:block;
     }
 
     /* Right: message */
     .message {
       flex: 0.9 1 0%;
-      padding:40px 44px;
+      padding:42px 44px;
       display:flex;
       flex-direction:column;
       justify-content:center;
-      gap:18px;
+      gap:22px;
     }
+
     .greeting {
       font-family: 'Great Vibes', cursive;
-      font-size:64px;
+      font-size:66px;
       line-height:0.9;
       margin:0;
       color:var(--accent);
-      text-shadow: 0 6px 30px rgba(255,59,107,0.12);
+      text-shadow: 0 6px 30px rgba(255,59,107,0.16);
     }
     .sub {
-      font-size:18px;
-      color:var(--muted);
+      font-size:20px;
+      color:var(--highlight);
       margin:0 0 8px 0;
-      font-weight:500;
+      font-weight:600;
+      letter-spacing:0.3px;
     }
 
     .line {
       font-size:20px;
-      color:#222;
+      color:var(--text-dark);
       margin:0;
-      padding:12px 14px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.02);
+      padding:14px 16px;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,245,248,0.6), rgba(255,245,248,0.95));
+      border-left:5px solid var(--accent);
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.03);
       font-weight:600;
+      line-height:1.45;
     }
 
     .big-quote{
-      font-size:22px;
-      color:#333;
-      margin-top:6px;
-      font-weight:600;
+      font-size:24px;
+      color:var(--text-soft);
+      margin-top:8px;
+      font-weight:700;
+      background:linear-gradient(90deg,#ffe3ec,#fff);
+      padding:16px 18px;
+      border-radius:14px;
+      border:1px solid rgba(255,59,107,0.18);
     }
 
     .footer{
       margin-top:12px;
-      font-size:13px;
-      color:#7a7a7a;
+      font-size:15px;
+      color:var(--accent);
+      font-weight:700;
+      letter-spacing:0.4px;
     }
 
-    /* small heart accent */
     .heart {
       display:inline-block;
       transform:translateY(3px);
-      font-size:20px;
+      font-size:24px;
       margin-left:8px;
+      color: var(--accent);
     }
 
-    /* responsive */
-    @media (max-width:900px){
+    /* === Responsive Adjustments === */
+    /* Tablet & Smaller Laptop View */
+    @media (max-width:1100px) {
+      .photo img {
+        height: 400px;
+      }
+    }
+    
+    @media (max-width:990px){
       .wrap{flex-direction:column;max-width:760px}
       .photo{min-width:unset;padding:18px}
-      .photo img{max-width:100%;height:420px;object-fit:cover}
-      .message{padding:22px}
-      .greeting{font-size:48px}
+      .photo img{max-width:100%;height:420px;object-fit:cover} /* Tablet landscape/smaller screen image height */
+      .message{padding:36px}
+      .greeting{font-size:58px}
+      .line{font-size:19px}
     }
 
-    @media (max-width:420px){
-      .greeting{font-size:36px}
-      .line{font-size:18px}
-      .photo img{height:320px}
+    /* Mobile View */
+    @media (max-width:480px){
+      body { padding: 16px; }
+      .wrap { border-radius: 16px; }
+      .greeting{font-size:42px}
+      .sub { font-size: 18px; }
+      .line{font-size:17px;padding:12px 14px}
+      .big-quote{font-size:20px;padding:14px}
+      .photo img{
+        width:calc(100% - 20px); /* 100% minus the border width */
+        height:280px; /* Mobile portrait image height */
+      }
+      .message{padding:20px}
+      .footer{font-size:14px}
     }
   </style>
 </head>
 <body>
   <div class="wrap" role="main" aria-label="Birthday card">
     <div class="photo" aria-hidden="false">
-      <!-- Place 'a.png' in the same folder as this HTML file -->
-      <img src="IMG_3345.JPG" alt="Gift / photo for birthday">
+      <img src="./IMG_3345.JPG" alt="A special birthday gift picture for you." />
     </div>
 
     <div class="message">
-      <h1 class="greeting">Happy Birthday<span class="heart">❤️</span></h1>
+      <h1 class="greeting">Happy Birthday, My Love<span class="heart">❤️</span></h1>
       <p class="sub">A special day made just for you.</p>
 
-      <!-- The exact lines you requested -->
-      <p class="line">I love you most.</p>
-      <p class="line">You are the best.</p>
+      <p class="line">You are the best thing that has happened to me in the last two years. Main hamesha tumhe yaad karta rehta hoon, and you will always remain my first priority — today, tomorrow, always.</p>
+      <p class="line">You are the strongest, smartest, and most beautiful person in this entire world, and I feel lucky every single day to have you in my life. Thank you for being you… for bringing peace, happiness, and meaning into my life.</p>
 
-      <p class="big-quote">Wishing you a day full of love, laughter and all your favourite things. Can't wait to celebrate together.</p>
+      <p class="big-quote">On your special day, I just want to remind you how precious you are to me. May this year bring you all the love, success, and happiness your beautiful heart deserves.</p>
 
-      <div class="footer">— With all my love</div>
+      <div class="footer">— I love you endlessly. Happy birthday, my queen. ❤️✨</div>
     </div>
   </div>
 </body>
