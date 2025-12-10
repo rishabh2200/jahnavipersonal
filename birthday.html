@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #fff0f3;
+      --bg2: #ffeef6;
+      --card: #ffffff;
+      --accent: #ff3b6b;
+      --muted: #6b6b6b;
+    }
+
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      padding:28px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:1100px;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 20px 40px rgba(20,20,40,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+      display:flex;
+      gap:0;
+      align-items:stretch;
+    }
+
+    /* Left: big photo */
+    .photo {
+      flex: 1.15 1 0%;
+      min-width:380px;
+      background:linear-gradient(180deg,#fff,#fff0);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+    .photo img{
+      width:100%;
+      max-width:620px;
+      height:auto;
+      border-radius:12px;
+      border:10px solid white;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Right: message */
+    .message {
+      flex: 0.9 1 0%;
+      padding:40px 44px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+    }
+    .greeting {
+      font-family: 'Great Vibes', cursive;
+      font-size:64px;
+      line-height:0.9;
+      margin:0;
+      color:var(--accent);
+      text-shadow: 0 6px 30px rgba(255,59,107,0.12);
+    }
+    .sub {
+      font-size:18px;
+      color:var(--muted);
+      margin:0 0 8px 0;
+      font-weight:500;
+    }
+
+    .line {
+      font-size:20px;
+      color:#222;
+      margin:0;
+      padding:12px 14px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.02);
+      font-weight:600;
+    }
+
+    .big-quote{
+      font-size:22px;
+      color:#333;
+      margin-top:6px;
+      font-weight:600;
+    }
+
+    .footer{
+      margin-top:12px;
+      font-size:13px;
+      color:#7a7a7a;
+    }
+
+    /* small heart accent */
+    .heart {
+      display:inline-block;
+      transform:translateY(3px);
+      font-size:20px;
+      margin-left:8px;
+    }
+
+    /* responsive */
+    @media (max-width:900px){
+      .wrap{flex-direction:column;max-width:760px}
+      .photo{min-width:unset;padding:18px}
+      .photo img{max-width:100%;height:420px;object-fit:cover}
+      .message{padding:22px}
+      .greeting{font-size:48px}
+    }
+
+    @media (max-width:420px){
+      .greeting{font-size:36px}
+      .line{font-size:18px}
+      .photo img{height:320px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main" aria-label="Birthday card">
+    <div class="photo" aria-hidden="false">
+      <!-- Place 'a.png' in the same folder as this HTML file -->
+      <img src="IMG_3345.JPG" alt="Gift / photo for birthday">
+    </div>
+
+    <div class="message">
+      <h1 class="greeting">Happy Birthday<span class="heart">❤️</span></h1>
+      <p class="sub">A special day made just for you.</p>
+
+      <!-- The exact lines you requested -->
+      <p class="line">I love you most.</p>
+      <p class="line">You are the best.</p>
+
+      <p class="big-quote">Wishing you a day full of love, laughter and all your favourite things. Can't wait to celebrate together.</p>
+
+      <div class="footer">— With all my love</div>
+    </div>
+  </div>
+</body>
+</html>
