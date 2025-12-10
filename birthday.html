@@ -28,42 +28,19 @@
 
     .wrap{
       width:100%;
-      max-width:1100px;
+      max-width:550px; 
       border-radius:22px;
       overflow:hidden;
       box-shadow: 0 20px 40px rgba(20,20,40,0.12);
       background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.98));
-      display:flex;
       gap:0;
       align-items:stretch;
       border: 2px solid rgba(255,59,107,0.12);
     }
 
-    /* Left: big photo */
-    .photo {
-      flex: 1.15 1 0%;
-      min-width:380px;
-      background: linear-gradient(180deg, rgba(255,245,248,0.6), rgba(255,245,248,0.95)); /* Soft background for image area */
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:26px;
-    }
-    .photo img{
-      width:100%;
-      height:auto;
-      max-height: none;
-      border-radius:16px;
-      border:10px solid white;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      object-fit:cover;
-      display:block;
-    }
-
-
-    /* Right: message */
+    /* Message area (now the main card content) */
     .message {
-      flex: 0.9 1 0%;
+      flex: 1 1 100%;
       padding:42px 44px;
       display:flex;
       flex-direction:column;
@@ -93,7 +70,7 @@
       margin:0;
       padding:14px 16px;
       border-radius:14px;
-      background: linear-gradient(180deg, rgba(255,245,248,0.6), rgba(255,245,248,0.95));
+      background: linear-gradient(180deg, rgba(255,245,248,0.6), rgba(255,245,248,0.95)); 
       border-left:5px solid var(--accent);
       box-shadow: inset 0 -2px 0 rgba(0,0,0,0.03);
       font-weight:600;
@@ -127,18 +104,51 @@
       color: var(--accent);
     }
 
-    /* === Responsive Adjustments === */
-    /* Tablet & Smaller Laptop View */
-    @media (max-width:1100px) {
-      .photo img {
-        height: 400px;
-      }
+    /* === New Gift Button and Image Styles === */
+    .gift-button {
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        padding: 14px 25px;
+        margin-top: 15px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.1s;
+        box-shadow: 0 8px 20px rgba(255, 59, 107, 0.4);
     }
-    
+    .gift-button:hover {
+        background-color: #e5345d; /* Slightly darker pink */
+    }
+    .gift-button:active {
+        transform: scale(0.98);
+    }
+
+    .gift-container {
+        display: none; /* Hidden by default */
+        margin-top: 25px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .gift-container.visible {
+        display: block;
+        opacity: 1;
+    }
+    .gift-container img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 16px;
+        border: 8px solid var(--accent);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    /* ======================================= */
+
+    /* === Responsive Adjustments === */
     @media (max-width:990px){
-      .wrap{flex-direction:column;max-width:760px}
-      .photo{min-width:unset;padding:18px}
-      .photo img{max-width:100%;height:420px;object-fit:cover} /* Tablet landscape/smaller screen image height */
+      .wrap{max-width:550px} 
       .message{padding:36px}
       .greeting{font-size:58px}
       .line{font-size:19px}
@@ -152,10 +162,6 @@
       .sub { font-size: 18px; }
       .line{font-size:17px;padding:12px 14px}
       .big-quote{font-size:20px;padding:14px}
-      .photo img{
-        width:100%; /* Simplified width to fit container */
-        height:250px; /* Reduced height for better mobile visibility */
-      }
       .message{padding:20px}
       .footer{font-size:14px}
     }
@@ -164,10 +170,6 @@
 <body>
   <div class="wrap" role="main" aria-label="Birthday card">
     
-    <div class="photo" aria-hidden="false">
-      <img src="./IMG_3345.JPG" alt="A special birthday gift picture for you." />
-    </div>
-
     <div class="message">
       <h1 class="greeting">Happy Birthday, My Love<span class="heart">❤️</span></h1>
       <p class="sub">A special day made just for you.</p>
@@ -178,7 +180,28 @@
       <p class="big-quote">On your special day, I just want to remind you how precious you are to me. May this year bring you all the love, success, and happiness your beautiful heart deserves.</p>
 
       <div class="footer">— I love you endlessly. Happy birthday, my queen. ❤️✨</div>
+      
+      <button class="gift-button" id="showGiftBtn">
+          Tap Here for Your Birthday Gift! 🎁
+      </button>
+
+      <div class="gift-container" id="giftContainer">
+        <img src="./IMG_3345.JPG" alt="Your surprise birthday gift image." />
+      </div>
+
     </div>
   </div>
+
+  <script>
+    document.getElementById('showGiftBtn').addEventListener('click', function() {
+      var giftContainer = document.getElementById('giftContainer');
+      
+      // Make the container visible
+      giftContainer.classList.add('visible');
+
+      // Optional: Hide the button once the gift is revealed
+      this.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
