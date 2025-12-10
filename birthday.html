@@ -51,14 +51,15 @@
     }
     .photo img{
       width:100%;
-      max-width:620px;
-      height: 480px; /* Base height for laptop view */
+      height:auto;
+      max-height: none;
       border-radius:16px;
       border:10px solid white;
       box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      object-fit:cover; /* Ensures the image covers the container without distortion */
+      object-fit:cover;
       display:block;
     }
+
 
     /* Right: message */
     .message {
@@ -162,6 +163,7 @@
 </head>
 <body>
   <div class="wrap" role="main" aria-label="Birthday card">
+    
     <div class="photo" aria-hidden="false">
       <img src="./IMG_3345.JPG" alt="A special birthday gift picture for you." />
     </div>
